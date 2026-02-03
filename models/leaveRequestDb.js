@@ -7,9 +7,9 @@ const pool = mysql.createPool({
     password: ''
 })
 
-const getEmployeesDb = async () => {
-    let [data] = await pool.query('SELECT * FROM employees')
+const getLeaveRequestsDb = async () => {
+    let [data] = await pool.query('SELECT * FROM leave_requests')
     return data
 }
 
-export {getEmployeesDb}
+export {getLeaveRequestsDb}
