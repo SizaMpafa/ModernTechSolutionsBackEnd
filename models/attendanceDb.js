@@ -1,11 +1,5 @@
-import mysql from 'mysql2/promise'
+import { pool } from "../config/config.js"
 
-const pool = mysql.createPool({
-    user: 'root',
-    host: 'localhost',
-    database: 'employee_dummydata',
-    password: 'umgangatho_db'
-})
 
 const getAttendanceDb = async () => {
     let [data] = await pool.query('SELECT * FROM attendance')
