@@ -4,7 +4,7 @@ const pool = mysql.createPool({
     user: 'root',
     host: 'localhost',
     database: 'employee_dummydata',
-    password: 'umgangatho_db'
+    password: ''
 })
 
 const getAttendanceDb = async () => {
