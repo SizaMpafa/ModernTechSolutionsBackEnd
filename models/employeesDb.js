@@ -67,5 +67,9 @@ const updateEmployeesDb = async (employee_Id, updates) => {
   await pool.query(query, values)
 }
 
+const deleteEmployeeDb = async (employee_Id) =>{
+    let [data] = await pool.query('DELETE FROM `employees` WHERE (`employee_Id` = ?);', [employee_Id])
+    return data
+}
 
-export {getEmployeesDb, insertEmployeesDb, updateEmployeesDb}
+export {getEmployeesDb, insertEmployeesDb, updateEmployeesDb, deleteEmployeeDb}

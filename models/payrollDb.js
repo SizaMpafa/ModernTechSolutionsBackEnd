@@ -1,4 +1,4 @@
-import { pool } from "../config/config.js"
+import { pool } from "../pool.js"
 
 const getPayrollDb = async () => {
     let [data] = await pool.query('SELECT * FROM payroll_data')
