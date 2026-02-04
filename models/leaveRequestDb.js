@@ -5,5 +5,7 @@ const getLeaveRequestsDb = async () => {
     let [data] = await pool.query('SELECT * FROM leave_requests')
     return data
 }
-
-export {getLeaveRequestsDb}
+const insertLeaveRequestsDb = async (date, status,reason, employee_id) => {
+    let [data] = await pool.query('INSERT INTO `leave_requests` (`date`, `status`,`requests,`employee_id`) VALUES (?, ?, ?)', [date, status,reason,employee_id])
+    return data}
+export {getLeaveRequestsDb, insertLeaveRequestsDb}

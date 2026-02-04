@@ -2,7 +2,7 @@ import express from 'express'
 import {getPayrollCon } from './controllers/payrollController.js';
 import {deleteEmployeeCon, getEmployeesCon, insertEmployeesCon, updateEmployeesCon } from './controllers/employeesController.js';
 import {getAttendanceCon, insertAttendanceCon, updateAttendanceCon } from './controllers/attendanceController.js';
-import { getLeaveRequestsCon } from './controllers/leaveRequestConroller.js';
+import { getLeaveRequestsCon, insertLeaveRequestCon } from './controllers/leaveRequestConroller.js';
 
 const app = express();
 app.use(express.json())
@@ -16,7 +16,7 @@ app.get('/payroll', getPayrollCon);
 app.post('/attendance', insertAttendanceCon);
 app.patch('/employee/:employee_id/attendance/:attendance_id', updateAttendanceCon);
 app.get('/leave_requests', getLeaveRequestsCon);
-
+app.post('/leave_requests',insertLeaveRequestCon)
 app.listen(port, () => {
   console.log(`http://localhost:${port}`)
 })
