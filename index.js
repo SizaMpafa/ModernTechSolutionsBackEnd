@@ -1,6 +1,6 @@
 import express from 'express'
 import {getPayrollCon } from './controllers/payrollController.js';
-import {getEmployeesCon, insertEmployeesCon, updateEmployeesCon } from './controllers/employeesController.js';
+import {deleteEmployeeCon, getEmployeesCon, insertEmployeesCon, updateEmployeesCon } from './controllers/employeesController.js';
 import {getAttendanceCon, insertAttendanceCon, updateAttendanceCon } from './controllers/attendanceController.js';
 import { getLeaveRequestsCon } from './controllers/leaveRequestConroller.js';
 
@@ -10,6 +10,7 @@ const port = 1111
 app.get('/employees', getEmployeesCon);
 app.post('/employees', insertEmployeesCon);
 app.patch('/employees/:employee_Id', updateEmployeesCon);
+app.delete('/employees/:employee_Id', deleteEmployeeCon);
 app.get('/attendance', getAttendanceCon);
 app.get('/payroll', getPayrollCon);
 app.post('/attendance', insertAttendanceCon);

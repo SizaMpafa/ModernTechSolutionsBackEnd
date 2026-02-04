@@ -1,4 +1,4 @@
-import {getEmployeesDb, insertEmployeesDb, updateEmployeesDb } from "../models/employeesDb.js"
+import {deleteEmployeeDb, getEmployeesDb, insertEmployeesDb, updateEmployeesDb } from "../models/employeesDb.js"
 
 const getEmployeesCon = async (req, res) => {
     res.json({employees: await getEmployeesDb()})
@@ -15,5 +15,11 @@ const updateEmployeesCon = async (req, res) => {
     await updateEmployeesDb(employee_Id, updates)
     res.json({employees: await getEmployeesDb()})
 }
-export {getEmployeesCon, insertEmployeesCon, updateEmployeesCon}
+
+const deleteEmployeeCon = async (req, res) => {
+    let {employee_Id} = req.params
+    await deleteEmployeeDb(employee_Id)
+    res.json({employees: await getEmployeesDb()})
+}
+export {getEmployeesCon, insertEmployeesCon, updateEmployeesCon, deleteEmployeeCon}
 
