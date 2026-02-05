@@ -1,7 +1,14 @@
 import {getLeaveRequestsDb, insertLeaveRequestsDb, updateLeaveRequestDb } from "../models/leaveRequestDb.js"
 
 const getLeaveRequestsCon = async (req, res) => {
-    res.json({leave_request: await getLeaveRequestsDb()})
+    const leave_request = await getLeaveRequestsDb();
+    const formatted = leave_request.map(l => ({
+        ...l,
+        date: new Date(l.date)
+        .toISOString()
+        .split("T")[0] // YYYY-MM-DD
+    }));
+        res.json({leave_request: formatted})
 }
 
 

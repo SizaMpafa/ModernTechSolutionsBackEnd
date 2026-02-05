@@ -1,8 +1,18 @@
 import { getAttendanceDb, insertAttendanceDb, updateAttendanceDb } from "../models/attendanceDb.js"
 
 const getAttendanceCon = async (req, res) => {
-    res.json({attendance: await getAttendanceDb()})
-}
+  const attendance = await getAttendanceDb();
+
+  const formatted = attendance.map(a => ({
+    ...a,
+    attendance_date: new Date(a.attendance_date)
+      .toISOString()
+      .split("T")[0] // YYYY-MM-DD
+  }));
+
+  res.json({ attendance: formatted });
+};
+
 const insertAttendanceCon = async (req, res) => {
     let {attendance_date, attendance_status, employee_id} = req.body
     await insertAttendanceDb(attendance_date, attendance_status, employee_id)

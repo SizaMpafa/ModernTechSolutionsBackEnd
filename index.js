@@ -1,10 +1,12 @@
 import express from 'express'
+import cors from 'cors'
 import {getPayrollCon } from './controllers/payrollController.js';
 import {deleteEmployeeCon, getEmployeesCon, insertEmployeesCon, updateEmployeesCon } from './controllers/employeesController.js';
 import {getAttendanceCon, insertAttendanceCon, updateAttendanceCon } from './controllers/attendanceController.js';
 import { getLeaveRequestsCon, insertLeaveRequestCon, updateLeaveRequestCon } from './controllers/leaveRequestConroller.js';
 
 const app = express();
+app.use(cors()) //cross origin resource sharing 
 app.use(express.json())
 const port = 1111
 app.get('/employees', getEmployeesCon);
