@@ -8,7 +8,7 @@ import { getLeaveRequestsCon, insertLeaveRequestCon, updateLeaveRequestCon } fro
 const app = express();
 app.use(cors()) //cross origin resource sharing 
 app.use(express.json())
-const port = 1111
+const port = process.env.PORT || 1111
 app.get('/employees', getEmployeesCon);
 app.post('/employees', insertEmployeesCon);
 app.patch('/employees/:employee_Id', updateEmployeesCon);
